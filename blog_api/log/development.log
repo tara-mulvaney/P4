@@ -1,0 +1,4 @@
+  [1m[35m (586.7ms)[0m  [1m[35mCREATE DATABASE "blog_api_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (457.9ms)[0m  [1m[35mCREATE DATABASE "blog_api_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
