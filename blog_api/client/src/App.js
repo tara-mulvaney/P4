@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import {
-  request, blogData
+  request
 } from './service/apiHelper'
 
 
@@ -17,18 +17,18 @@ class App extends Component {
 
   componentDidMount = async () => {
     const blog = await axios.get('http://localhost:3001/blogs');
-    const apiData = blogData.data;
+    const apiData = request.data;
   }
 
 
 
   showBlogsOnPage() {
-    return this.state.apiData.map((blogData) => {
+    return this.state.apiData.map((blog) => {
       return (
-        <div className="blog-id" key={blogData.id}>
-          <p className="title">{blogData.title}</p>
-          <span className="content">{blogData.content}</span>
-          <span className="topic">{blogData.topic}</span>
+        <div className="blog-id" key={blog.id}>
+          <p className="title">{blog.title}</p>
+          <span className="content">{blog.content}</span>
+          <span className="topic">{blog.topic}</span>
         </div>
       );
     });
