@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import './App.css';
+import {
+  request, blogData
+} from './service/apiHelper'
+
 
 class App extends Component {
   constructor() {
@@ -12,19 +16,19 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
-    const blogs = await axios.get('http://localhost:3001/blogs');
-    const apiData = blogs.data;
+    const blog = await axios.get('http://localhost:3001/blogs');
+    const apiData = blogData.data;
   }
 
 
 
   showBlogsOnPage() {
-    return this.state.apiData.map((blogs) => {
+    return this.state.apiData.map((blogData) => {
       return (
-        <div className="blog-id" key={blogs.id}>
-          <p className="title">{blogs.title}</p>
-          <span className="content">{blogs.content}</span>
-          <span className="topic">{blogs.topic}</span>
+        <div className="blog-id" key={blogData.id}>
+          <p className="title">{blogData.title}</p>
+          <span className="content">{blogData.content}</span>
+          <span className="topic">{blogData.topic}</span>
         </div>
       );
     });
