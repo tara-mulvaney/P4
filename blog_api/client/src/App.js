@@ -16,8 +16,9 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
-    const blog = await axios.get('http://localhost:3001/blogs');
+    const blog = await axios.get('http://localhost:3000/blogs');
     const apiData = request.data;
+    console.log(apiData)
   }
 
 
