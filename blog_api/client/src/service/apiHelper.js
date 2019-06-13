@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL = 'http://localhost:3001'
+const URL = 'http://localhost:3000'
 
 export const request = async (blogData) => {
   try {

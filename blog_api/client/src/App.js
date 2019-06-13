@@ -17,14 +17,17 @@ class App extends Component {
 
   componentDidMount = async () => {
     const blog = await axios.get('http://localhost:3000/blogs');
-    const apiData = request.data;
-    console.log(apiData)
+    this.setState({
+      apiData: blog.data,
+      apiDataLoaded: true,
+    })
+    console.log(blog.data,'blogs')
   }
 
 
 
   showBlogsOnPage() {
-    return this.state.apiData.map((blog) => {
+    return this.state.apiData&&this.state.apiData.map((blog) => {
       return (
         <div className="blog-id" key={blog.id}>
           <p className="title">{blog.title}</p>
