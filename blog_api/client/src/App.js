@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import {  getAllBlogs } from './service/apiHelper';
+import {  getAllBlogs, deleteBlog } from './service/apiHelper';
 import AddButton from './components/AddButton/AddButton';
+import AddBlog from './components/AddBlog/AddBlog';
 import EditButton from './components/EditButton/EditButton';
 import DeleteButton from './components/DeleteButton/DeleteButton';
+import EditBlog from './components/EditBlog/EditBlog';
+import DeleteBlog from './components/DeleteBlog/DeleteBlog';
+import { Route, Link } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -35,13 +39,10 @@ class App extends Component {
           <p className="title">{blog.title}</p>
           <span className="content">{blog.content}</span>
         </div>
-<<<<<<< HEAD
         <EditBlog
           blog={blog}/>
-=======
-        <EditButton/>
->>>>>>> parent of 05eac6f... edit form added, onsubmit i return an error stating can't use redirect outside of a router
-        <DeleteButton/>
+        <DeleteBlog
+          blog={blog}/>
       </div>
       );
     });
@@ -51,7 +52,12 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <AddButton/>
+
+          <Link to='add-blog'><AddButton/></Link>
+          <Route
+            path='/add-blog'
+            render={() => <AddBlog />}
+          />
           {(this.state.apiDataLoaded) ? this.showBlogsOnPage() : <p>Loading...</p>}
         </div>
       </div>
