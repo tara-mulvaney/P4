@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { editBlog } from '../../service/apiHelper';
 import EditButton from '../EditButton/EditButton'
-import {Redirect} from 'react-router-dom';
+// import {Redirect} from 'react-router-dom';
 
 class EditBlog extends Component {
     constructor () {
@@ -47,10 +47,10 @@ class EditBlog extends Component {
     componentDidMount = () => {
         this.handleFill();
     }
+    // if(this.state.editedBlog){
+    //     return <Redirect to='/' />
+    // }
     render() {
-        if(this.state.editedBlog){
-            return <Redirect to='/' />
-        }
         return (
           <div>
               <h1>Edit Blog</h1>
@@ -82,7 +82,7 @@ class EditBlog extends Component {
                         value={this.state.topic}
                         onChange={this.handleChange}
                     />
-                    <EditButton/>
+                    <submit><EditButton/></submit>
                 </form>
             </div>
         );
