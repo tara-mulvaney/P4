@@ -6,9 +6,9 @@ class AddBlog extends Component {
     constructor () {
         super();
         this.state = {
-            title: null,
-            content: null,
-            topic: null,
+            title: "",
+            content: "",
+            topic: "",
             addedBlog: false
         }
     }
@@ -34,11 +34,11 @@ class AddBlog extends Component {
             content: this.state.content,
             topic: this.state.topic
         }
-        let id = this.props.id
-        console.log(this.props.id);
-        console.log(id);
-        console.log(typeof id);
-        await addBlog(id, newBlog);
+        // let id = this.props.id
+        // console.log(this.props.id);
+        // console.log(id);
+        // console.log(typeof id);
+        await addBlog(newBlog);
         this.setState({addedBlog: true});
 
     }

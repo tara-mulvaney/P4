@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import {  getAllBlogs, deleteBlog } from './service/apiHelper';
+import {  getAllBlogs, editBlog, deleteBlog, addBlog } from './service/apiHelper';
 import AddButton from './components/AddButton/AddButton';
 import AddBlog from './components/AddBlog/AddBlog';
 import EditButton from './components/EditButton/EditButton';
-import DeleteButton from './components/DeleteButton/DeleteButton';
+// import DeleteButton from './components/DeleteButton/DeleteButton';
 import EditBlog from './components/EditBlog/EditBlog';
-import DeleteBlog from './components/DeleteBlog/DeleteBlog';
+// import DeleteBlog from './components/DeleteBlog/DeleteBlog';
 import { Route, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -34,16 +34,18 @@ class App extends Component {
     return this.state.apiData&&this.state.apiData.map((blog) => {
       return (
         <div>
-        <div className="blog-id" key={blog.id}>
-          <span className="topic">{blog.topic}</span>
-          <p className="title">{blog.title}</p>
-          <span className="content">{blog.content}</span>
+          <div className="blog-id" key={blog.id}>
+            <span className="topic">{blog.topic}</span>
+            <p className="title">{blog.title}</p>
+            <span className="content">{blog.content}</span>
+          </div>
+          <div>
+          <EditBlog
+            blog={blog}/>
+          </div>
         </div>
-        <EditBlog
-          blog={blog}/>
-        <DeleteBlog
-          blog={blog}/>
-      </div>
+      // <DeleteBlog
+      //   blog={blog}/>
       );
     });
   }

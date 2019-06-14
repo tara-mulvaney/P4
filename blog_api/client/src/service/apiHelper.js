@@ -4,7 +4,7 @@ const URL = 'http://localhost:3000'
 
 export const getAllBlogs = async (data) => {
   try {
-    const response = await axios.post(`${URL}/blogs`, data)
+    const response = await axios.post(`${URL}/blogs`, data);
     return response.data
   } catch(e) {
     console.log(e)
@@ -12,10 +12,11 @@ export const getAllBlogs = async (data) => {
 }
 
 export const addBlog = async (data) => {
-    try{
+    try {
         const resp = await axios.post(`${URL}/blogs`, data);
+        return resp.data;
         console.log(resp.data);
-        return resp
+
     }
     catch(e){
         console.log(e.message)
@@ -23,7 +24,7 @@ export const addBlog = async (data) => {
 }
 
 export const editBlog = async (id, data) => {
-    try{
+    try {
         console.log(id, 'id')
         console.log(data, 'data')
         const resp = await axios.put(`${URL}/blogs/${id}`, data);
@@ -36,7 +37,7 @@ export const editBlog = async (id, data) => {
 }
 
 export const deleteBlog = async (id) => {
-    try{
+    try {
         const resp = await axios.delete(`${URL}/blogs/${id}`);
         return console.log(resp, 'deleted');
     }

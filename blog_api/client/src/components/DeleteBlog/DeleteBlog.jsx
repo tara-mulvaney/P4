@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { deleteBlog } from '../../service/apiHelper';
 import DeleteButton from '../DeleteButton/DeleteButton'
-import Axios from 'axios';
 
 class DeleteBlog extends Component {
     constructor () {
@@ -31,7 +30,7 @@ class DeleteBlog extends Component {
     render() {
         return (
             <div>
-              <h1>Delete</h1>
+              <p>Delete</p>
                 <DeleteButton onClick={this.props.handleClick}/>
             </div>
         );
