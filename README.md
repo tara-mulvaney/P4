@@ -2,7 +2,7 @@
 
 My P4 is a blog site made with React on Rails. I generated models with scaffolding in rails for more rapid prototyping. 
 
-on load: all blogs are displayed from the database
+on load: all blogs are displayed from the database. /n
 clickables: 
 '+' button triggers a redirect to a new blog form.
 '-' button deletes a blog.
