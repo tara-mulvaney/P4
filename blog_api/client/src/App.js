@@ -4,6 +4,7 @@ import './App.css';
 import {  getAllBlogs } from './service/apiHelper';
 import AddButton from './components/AddButton/AddButton';
 import EditButton from './components/EditButton/EditButton';
+import EditBlog from './components/EditBlog/EditBlog';
 import DeleteButton from './components/DeleteButton/DeleteButton';
 
 class App extends Component {
@@ -35,7 +36,7 @@ class App extends Component {
           <p className="title">{blog.title}</p>
           <span className="content">{blog.content}</span>
         </div>
-        <EditButton/>
+        <EditBlog/>
         <DeleteButton/>
       </div>
       );
