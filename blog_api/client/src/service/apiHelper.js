@@ -13,7 +13,7 @@ export const getAllBlogs = async (data) => {
 
 export const addBlog = async (data) => {
     try{
-        const resp = await axios.post('/', data);
+        const resp = await axios.post(`${URL}/blogs`, data);
         console.log(resp.data);
         return resp
     }
@@ -26,9 +26,9 @@ export const editBlog = async (id, data) => {
     try{
         console.log(id, 'id')
         console.log(data, 'data')
-        const resp = await axios.put(`/${id}`, data);
-        console.log(resp.json);
-        return resp.json;
+        const resp = await axios.put(`${URL}/blogs/${id}`, data);
+        console.log(resp.data);
+        return resp.data;
     }
     catch(e){
         console.log(e.message)
@@ -37,7 +37,7 @@ export const editBlog = async (id, data) => {
 
 export const deleteBlog = async (id) => {
     try{
-        const resp = await axios.delete(`/${id}`);
+        const resp = await axios.delete(`${URL}/blogs/${id}`);
         return console.log(resp, 'deleted');
     }
     catch (e) {

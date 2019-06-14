@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { editBlog } from '../../service/apiHelper';
 import EditButton from '../EditButton/EditButton'
-// import {Redirect} from 'react-router-dom';
 
 class EditBlog extends Component {
     constructor () {
@@ -14,9 +13,9 @@ class EditBlog extends Component {
         }
     }
     handleFill = () => {
-        const title = this.props.title;
-        const content = this.props.content;
-        const topic = this.props.topic;
+        const title = this.props.blog.title;
+        const content = this.props.blog.content;
+        const topic = this.props.blog.topic;
         this.setState({title, content, topic})
     }
 
@@ -35,8 +34,8 @@ class EditBlog extends Component {
             content: this.state.content,
             topic: this.state.topic
         }
-        let id = Number(this.props.id)
-        console.log(this.props.id, 'pre parse');
+        let id = this.props.blog.id
+        console.log(this.props.blog.id);
         console.log(id);
         console.log(typeof id);
         await editBlog(id, updatedBlog);
@@ -47,13 +46,10 @@ class EditBlog extends Component {
     componentDidMount = () => {
         this.handleFill();
     }
-    // if(this.state.editedBlog){
-    //     return <Redirect to='/' />
-    // }
+
     render() {
         return (
           <div>
-              <h1>Edit Blog</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>Title:</label>
                     <input
@@ -82,7 +78,7 @@ class EditBlog extends Component {
                         value={this.state.topic}
                         onChange={this.handleChange}
                     />
-                    <submit><EditButton/></submit>
+                    <submit><EditButton onClick={this.handleSubmit}/></submit>
                 </form>
             </div>
         );

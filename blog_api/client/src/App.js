@@ -36,7 +36,8 @@ class App extends Component {
           <p className="title">{blog.title}</p>
           <span className="content">{blog.content}</span>
         </div>
-        <EditBlog/>
+        <EditBlog
+          blog={blog}/>
         <DeleteButton/>
       </div>
       );
