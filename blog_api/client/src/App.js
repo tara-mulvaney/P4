@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import {  request } from './service/apiHelper';
+import {  getAllBlogs } from './service/apiHelper';
 import AddButton from './components/AddButton/AddButton';
 import EditButton from './components/EditButton/EditButton';
 import DeleteButton from './components/DeleteButton/DeleteButton';
@@ -30,13 +30,13 @@ class App extends Component {
     return this.state.apiData&&this.state.apiData.map((blog) => {
       return (
         <div>
-        <EditButton/>
-        <DeleteButton/>
         <div className="blog-id" key={blog.id}>
+          <span className="topic">{blog.topic}</span>
           <p className="title">{blog.title}</p>
           <span className="content">{blog.content}</span>
-          <span className="topic">{blog.topic}</span>
         </div>
+        <EditButton/>
+        <DeleteButton/>
       </div>
       );
     });
