@@ -7,7 +7,7 @@ import AddBlog from './components/AddBlog/AddBlog';
 import EditButton from './components/EditButton/EditButton';
 // import DeleteButton from './components/DeleteButton/DeleteButton';
 import EditBlog from './components/EditBlog/EditBlog';
-// import DeleteBlog from './components/DeleteBlog/DeleteBlog';
+import DeleteBlog from './components/DeleteBlog/DeleteBlog';
 import { Route, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -33,15 +33,19 @@ class App extends Component {
   showBlogsOnPage() {
     return this.state.apiData&&this.state.apiData.map((blog) => {
       return (
-        <div>
-          <div className="blog-id" key={blog.id}>
-            <span className="topic">{blog.topic}</span>
-            <p className="title">{blog.title}</p>
-            <span className="content">{blog.content}</span>
-          </div>
-          <div>
-          <EditBlog
-            blog={blog}/>
+        <div className="parent">
+          <div className="blog">
+            <div className="blog-id" key={blog.id}>
+              <div className="topic">{blog.topic}</div>
+              <p className="title">{blog.title}</p>
+              <div className="content">{blog.content}</div>
+            </div>
+            <div className="buttons">
+            <EditBlog
+              blog={blog}/>
+            <DeleteBlog
+              blog={blog}/>
+            </div>
           </div>
         </div>
       // <DeleteBlog

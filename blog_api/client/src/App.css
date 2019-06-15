@@ -32,3 +32,34 @@
     transform: rotate(360deg);
   }
 }
+
+.parent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+.blog .blog-id  {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  justify-content: center;
+}
+
+
+
+ /* {
+  border: solid black;
+} */
+
+.topic, .title, .content {
+    border: solid black;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.buttons {
+  display: flex;
+}

@@ -43,7 +43,7 @@ class AddBlog extends Component {
 
     }
 
-    
+
 
     componentDidMount = () => {
         this.handleFill();

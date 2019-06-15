@@ -3,35 +3,50 @@ import { deleteBlog } from '../../service/apiHelper';
 import DeleteButton from '../DeleteButton/DeleteButton'
 
 class DeleteBlog extends Component {
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
         this.state = {
-            title: null,
-            content: null,
-            topic: null,
+            id: "",
+            title: "",
+            content: "",
+            topic: "",
             deletedBlog: false
         }
-        this.handleClick = this.handleClick.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+
+    handleFill = () => {
+        const title = this.props.blog.title;
+        const content = this.props.blog.content;
+        const topic = this.props.blog.topic;
+        console.log(this.props.blog.id)
+        this.setState({title, content, topic})
+    }
+
+    componentDidMount = () => {
+        this.handleFill();
+          let id = this.props.blog.id
     }
 
 
-    handleClick = async(e) => {
-        e.preventDefault();
-        console.log('deleted');
+    handleDelete = async(e) => {
+      e.preventDefault();
         let deletedBlog = {
-            title: this.props.title,
-            content: this.props.content,
-            topic: this.props.topic
+          title: "",
+          content: "",
+          topic: ""
         }
-        await deleteBlog(deletedBlog);
+        let id = this.props.blog.id
+        console.log(id)
+        await deleteBlog(id, deletedBlog);
         this.setState({deletedBlog: true});
-    }
+        }
+
 
     render() {
         return (
             <div>
-              <p>Delete</p>
-                <DeleteButton onClick={this.props.handleClick}/>
+                <DeleteButton onClick={this.handleDelete}/>
             </div>
         );
     }

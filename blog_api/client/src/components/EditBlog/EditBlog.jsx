@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { editBlog, deleteBlog } from '../../service/apiHelper';
+import { editBlog } from '../../service/apiHelper';
 import EditButton from '../EditButton/EditButton'
-import DeleteButton from '../DeleteButton/DeleteButton'
 
 class EditBlog extends Component {
     constructor () {
         super();
         this.state = {
-            title: null,
-            content: null,
-            topic: null,
+            title: "",
+            content: "",
+            topic: "",
             editedBlog: false,
-            deletedBlog: false
         }
     }
     handleFill = () => {
@@ -45,22 +43,6 @@ class EditBlog extends Component {
 
     }
 
-    handleClick = async(e) => {
-        e.preventDefault();
-        let deletedBlog = {
-            title: this.props.blog.title,
-            content: this.props.blog.content,
-            topic: this.props.blog.topic
-        }
-        let id = this.props.blog.id
-        // console.log(this.props.blog.id);
-        // console.log(id);
-        // console.log(typeof id);
-        await deleteBlog(id, deletedBlog);
-        this.setState({deletedBlog: true});
-
-    }
-
 
 
     componentDidMount = () => {
@@ -79,7 +61,6 @@ class EditBlog extends Component {
                         name='title'
                         value={this.state.title}
                         onChange={this.handleChange}
-                        onDelete={this.handleClick}
                     />
                     <label>Content:</label>
                     <input
@@ -89,7 +70,6 @@ class EditBlog extends Component {
                         name='content'
                         value={this.state.content}
                         onChange={this.handleChange}
-                        onDelete={this.handleClick}
                     />
                     <label>Topic:</label>
                     <input
@@ -99,10 +79,8 @@ class EditBlog extends Component {
                         name='topic'
                         value={this.state.topic}
                         onChange={this.handleChange}
-                        onDelete={this.handleClick}
                     />
                     <submit><EditButton onClick={this.handleSubmit}/></submit>
-                    <submit><DeleteButton onClick={this.handleClick}/></submit>
                 </form>
             </div>
         );
