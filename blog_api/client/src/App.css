@@ -24,7 +24,7 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes {
   from {
     transform: rotate(0deg);
   }
@@ -43,8 +43,10 @@
 .blog .blog-id  {
   display: flex;
   flex-direction: column;
-  width: 450px;
   justify-content: center;
+  background-color: #5BF47B;
+  margin-top: 100px;
+
 }
 
 
@@ -52,14 +54,38 @@
  /* {
   border: solid black;
 } */
+body {
+  background-color: black;
+}
+
+header {
+  color: #5BF47B;
+  background-color: black;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  margin-bottom: 20px;
+}
 
 .topic, .title, .content {
-    border: solid black;
     display: flex;
     flex-direction: column;
-    width: 200px;
+    justify-content: center;
+}
+
+.content {
+  height: 200px;
+  justify-content: center;
 }
 
 .buttons {
   display: flex;
+}
+
+button {
+  cursor: pointer;
+}
+
+.App .addButton {
+  align-items: flex-end;
 }

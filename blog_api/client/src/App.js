@@ -7,6 +7,8 @@ import AddBlog from './components/AddBlog/AddBlog';
 import EditButton from './components/EditButton/EditButton';
 // import DeleteButton from './components/DeleteButton/DeleteButton';
 import EditBlog from './components/EditBlog/EditBlog';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import DeleteBlog from './components/DeleteBlog/DeleteBlog';
 import { Route, Link } from 'react-router-dom';
 
@@ -28,7 +30,13 @@ class App extends Component {
     console.log(blog.data,'blogs')
   }
 
-
+  handleDelete = async (e) => {
+    let id = this.props.blog.id
+       e.preventDefault();
+      console.log('deleted')
+      await axios.delete(`http://localhost:3000/blogs/${id}`)
+      this.props.showBlogsOnPage()
+    }
 
   showBlogsOnPage() {
     return this.state.apiData&&this.state.apiData.map((blog) => {
@@ -44,7 +52,9 @@ class App extends Component {
             <EditBlog
               blog={blog}/>
             <DeleteBlog
-              blog={blog}/>
+              blog={blog}
+              type='submit'
+              onClick={this.handleDelete}/>
             </div>
           </div>
         </div>
@@ -54,17 +64,21 @@ class App extends Component {
     });
   }
 
+
+
   render() {
     return (
       <div className="App">
         <div>
+          <Link to='/'><Header /></Link>
+          {(this.state.apiDataLoaded) ? this.showBlogsOnPage() : <p>Loading...</p>}
+          <Link to='add-blog'><AddButton className="addButton"/></Link>
 
-          <Link to='add-blog'><AddButton/></Link>
           <Route
             path='/add-blog'
             render={() => <AddBlog />}
           />
-          {(this.state.apiDataLoaded) ? this.showBlogsOnPage() : <p>Loading...</p>}
+          <Footer />
         </div>
       </div>
     );
